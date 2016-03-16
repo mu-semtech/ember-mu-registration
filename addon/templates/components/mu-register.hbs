@@ -1,0 +1,27 @@
+<div class="feedback-message">
+  {{#if loading}}
+    <span class="loading">Registering...</span>
+  {{/if}}
+  {{#if errorMessage}}
+    <span class="error-message">{{errorMessage}}</span>
+  {{/if}}
+</div>
+<form class="registration-form" {{action "register" on="submit"}}>
+  <div class="registration-form-name">
+    <label>Name</label>
+    {{input value=name placeholder="John Doe"}}
+  </div>
+  <div class="registration-form-nickname">
+    <label>Username</label>
+    {{input value=nickname placeholder="john.doe"}}
+  </div>
+  <div class="registration-form-password">
+    <label>Password</label>
+    {{input value=password type="password"}}
+  </div>
+  <div class="registration-form-password-confirmation">
+    <label>Confirm password</label>
+    {{input value=passwordConfirmation type="password"}}
+  </div>
+  <button>Register</button>
+</form>
