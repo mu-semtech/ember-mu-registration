@@ -1,7 +1,7 @@
 {
   "name": "ember-mu-registration",
   "version": "1.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Default ember component for mu-registration-service. See http://mu.semte.ch/.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -39,7 +39,8 @@
     "loader.js": "^4.0.0"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "mu-semtech"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
