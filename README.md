@@ -1,26 +1,25 @@
 # Ember-mu-registration
 
-This README outlines the details of collaborating on this Ember addon.
+This addon provides a mu-register, mu-unregister and mu-change-password component for the [mu-registration microservice](https://github.com/mu-semtech/registration-service). 
 
-## Installation
+## Basic usage
+Just include the `{{mu-register}}`, `{{mu-unregister}}` or `{{mu-change-password}}` component in your template.
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Advanced usage
 
-## Running
+### Overwriting the component templates
+To overwrite the template of the components, create a custom `mu-register.hbs`, `mu-unregister.hbs` or `mu-change-password.hbs` file. Make sure you use the correct bindings and actions. You can have a look at the default templates in `addon/templates/components`.
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+For mu-register
+  - call the `register` action
+  - use `name`, `nickname`, `password` and `passwordConfirmation` as value bindings for the input fields
 
-## Running Tests
+For mu-unregister
+  - call the `unregister` action
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+For mu-change-password
+  - call the `changePassword` action
+  - use `oldPassword`, `newPassword` and `newPasswordConfirmation` as value bindings for the input fields
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+### Customizing the components
+To customize the components, generate your own new components and include the mu-register (`ember-mu-registration/mixins/mu-register`), mu-unregister (`ember-mu-registration/mixins/mu-unregister`) and mu-change-password (`ember-mu-registration/mixins/mu-change-password`) mixins to handle the `register`, `unregister` and `changePassword` actions.
