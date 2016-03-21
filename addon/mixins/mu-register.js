@@ -9,10 +9,10 @@ export default Ember.Mixin.create({
   _init() {
     this.set('loading', false);
     this.setProperties({
-      name: null,
-      nickname: null,
-      password: null,
-      passwordConfirmation: null
+      name: '',
+      nickname: '',
+      password: '',
+      passwordConfirmation: ''
     });
   },
 
