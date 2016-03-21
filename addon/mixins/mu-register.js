@@ -6,6 +6,16 @@ export default Ember.Mixin.create({
     return Configuration.accountBasePath;
   }),
 
+  _init() {
+    this.set('loading', false);
+    this.setProperties({
+      name: null,
+      nickname: null,
+      password: null,
+      passwordConfirmation: null
+    });
+  },
+
   actions: {
     register() {
       this.set('loading', true);
@@ -32,8 +42,7 @@ export default Ember.Mixin.create({
           }
         })
       }).then((response) => {
-	this.set('loading', false);
-        console.log('Registered successfully');
+	this._init();
       }, (reason) => {
         this.set('loading', false);
         var error = reason.responseJSON.errors[0].title;
