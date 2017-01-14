@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mu-semtech/registration-ember-addon"
+    "url": "https://github.com/mu-semtech/ember-mu-registration"
   },
   "engines": {
     "node": ">= 0.10.0"
