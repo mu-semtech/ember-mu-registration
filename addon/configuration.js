@@ -40,7 +40,10 @@ export default {
     let wrappedConfig = Ember.Object.create(config);
     for (let property in this) {
       if (this.hasOwnProperty(property) && Ember.typeOf(this[property]) !== 'function') {
-        this[property] = wrappedConfig.getWithDefault(property, DEFAULTS[property]);
+        this[property] = wrappedConfig.get(property);
+        if (this[property] === undefined) {
+          this[property] = DEFAULTS[property];
+        }
       }
     }
   }
