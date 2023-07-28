@@ -4,5 +4,5 @@ import MuChangePasswordMixin from 'ember-mu-registration/mixins/mu-change-passwo
 
 export default Ember.Component.extend(MuChangePasswordMixin, {
   layout: layout,
-  classNames: ['mu-change-password']
+  classNames: ['mu-change-password'],
 });

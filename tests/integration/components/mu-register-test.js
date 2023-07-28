@@ -2,11 +2,10 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('mu-register', 'Integration | Component | mu register', {
-  integration: true
+  integration: true,
 });
 
-test('it renders', function(assert) {
-  
+test('it renders', function (assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
@@ -16,9 +15,9 @@ test('it renders', function(assert) {
 
   // Template block usage:" + EOL +
   this.render(hbs`
-    {{#mu-register}}
+    <MuRegister>
       template block text
-    {{/mu-register}}
+    </MuRegister>
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');
