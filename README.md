@@ -1,6 +1,6 @@
 # Ember-mu-registration
 
-This addon provides a `{{mu-register}}`, `{{mu-unregister}}` and `{{mu-change-password}}` component for the [mu-registration microservice](https://github.com/mu-semtech/registration-service). 
+This addon provides a `<MuRegister />`, `<MuUnregister />` and `<MuChangePassword />` component for the [mu-registration microservice](https://github.com/mu-semtech/registration-service).
 
 ## Installation
 ```
@@ -8,7 +8,7 @@ ember install ember-mu-registration
 ```
 
 ## Basic usage
-Just include the `{{mu-register}}`, `{{mu-unregister}}` or `{{mu-change-password}}` component in your template.
+Just include the `<MuRegister />`, `<MuUnregister />` or `<MuChangePassword />` component in your template.
 
 ## Advanced usage
 
