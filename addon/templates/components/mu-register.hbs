@@ -6,22 +6,31 @@
     <span class="error-message">{{this.errorMessage}}</span>
   {{/if}}
 </div>
+{{!-- template-lint-disable no-action --}}
 <form class="registration-form" {{action "register" on="submit"}}>
   <div class="registration-form-name">
-    <label>Name</label>
-    <Input @value={{this.name}} placeholder="John Doe" />
+    <label>
+      Name
+      <Input @value={{this.name}} placeholder="John Doe" />
+    </label>
   </div>
   <div class="registration-form-nickname">
-    <label>Username</label>
-    <Input @value={{this.nickname}} placeholder="john.doe" />
+    <label>
+      Username
+      <Input @value={{this.nickname}} placeholder="john.doe" />
+    </label>
   </div>
   <div class="registration-form-password">
-    <label>Password</label>
-    <Input @value={{this.password}} type="password" />
+    <label>
+      Password
+      <Input @value={{this.password}} @type="password" />
+    </label>
   </div>
   <div class="registration-form-password-confirmation">
-    <label>Confirm password</label>
-    <Input @value={{this.passwordConfirmation}} type="password" />
+    <label>
+      Confirm password
+      <Input @value={{this.passwordConfirmation}} @type="password" />
+    </label>
   </div>
   <button type="submit">Register</button>
 </form>

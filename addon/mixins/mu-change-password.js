@@ -1,8 +1,11 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Mixin from '@ember/object/mixin';
+import $ from 'jquery';
 import Configuration from './../configuration';
 
-export default Ember.Mixin.create({
-  basePath: Ember.computed(function () {
+// eslint-disable-next-line ember/no-new-mixins
+export default Mixin.create({
+  basePath: computed(function () {
     return Configuration.accountBasePath;
   }),
 
@@ -24,7 +27,8 @@ export default Ember.Mixin.create({
         newPasswordConfirmation: this.newPasswordConfirmation,
       };
 
-      Ember.$.ajax({
+      // eslint-disable-next-line ember/no-jquery
+      $.ajax({
         url: this.basePath + '/current/changePassword',
         type: 'PATCH',
         dataType: 'json',
@@ -44,7 +48,7 @@ export default Ember.Mixin.create({
           },
         }),
       }).then(
-        (response) => {
+        () => {
           this._init();
         },
         (reason) => {

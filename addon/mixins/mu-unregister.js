@@ -1,14 +1,18 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Mixin from '@ember/object/mixin';
+import $ from 'jquery';
 import Configuration from './../configuration';
 
-export default Ember.Mixin.create({
-  basePath: Ember.computed(function () {
+// eslint-disable-next-line ember/no-new-mixins
+export default Mixin.create({
+  basePath: computed(function () {
     return Configuration.accountBasePath;
   }),
 
   actions: {
     unregister() {
-      Ember.$.ajax({
+      // eslint-disable-next-line ember/no-jquery
+      $.ajax({
         url: this.basePath + '/current',
         type: 'DELETE',
         headers: {

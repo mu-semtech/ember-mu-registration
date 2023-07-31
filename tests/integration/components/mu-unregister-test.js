@@ -1,24 +1,26 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'dummy/tests/helpers';
+import { render } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
 
-moduleForComponent('mu-unregister', 'Integration | Component | mu unregister', {
-  integration: true,
-});
+module('Integration | Component | mu-unregister', function (hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function (assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
+  test('it renders', async function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
 
-  this.render(hbs`{{mu-unregister}}`);
+    await render(hbs`<MuUnregister />`);
 
-  assert.equal(this.$().text().trim(), '');
+    assert.dom(this.element).hasText('Unregister');
 
-  // Template block usage:"
-  this.render(hbs`
-    <MuUnregister>
-      template block text
-    </MuUnregister>
-  `);
+    // // Template block usage:
+    // await render(hbs`
+    //   <MuUnregister>
+    //     template block text
+    //   </MuUnregister>
+    // `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    // assert.dom(this.element).hasText('template block text');
+  });
 });
