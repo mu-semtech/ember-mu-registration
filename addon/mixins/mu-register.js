@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import $ from 'jquery';
 import Configuration from './../configuration';
 
 export default Ember.Mixin.create({
@@ -28,7 +29,7 @@ export default Ember.Mixin.create({
         passwordConfirmation: this.passwordConfirmation,
       };
 
-      Ember.$.ajax({
+      $.ajax({
         url: this.basePath,
         type: 'POST',
         dataType: 'json',
