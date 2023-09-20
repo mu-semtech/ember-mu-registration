@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
+import { typeOf } from '@ember/utils';
 
 const DEFAULTS = {
-  accountBasePath: '/accounts'
+  accountBasePath: '/accounts',
 };
 
 /**
@@ -23,7 +24,6 @@ const DEFAULTS = {
   @public
 */
 export default {
-
   /**
     Base path for the registration requests
 
@@ -37,11 +37,17 @@ export default {
   accountBasePath: DEFAULTS.accountBasePath,
 
   load(config) {
-    let wrappedConfig = Ember.Object.create(config);
+    let wrappedConfig = EmberObject.create(config);
     for (let property in this) {
-      if (this.hasOwnProperty(property) && Ember.typeOf(this[property]) !== 'function') {
-        this[property] = wrappedConfig.getWithDefault(property, DEFAULTS[property]);
+      if (
+        Object.prototype.hasOwnProperty.call(this, property) &&
+        typeOf(this[property]) !== 'function'
+      ) {
+        this[property] = wrappedConfig.get(property);
+        if (this[property] === undefined) {
+          this[property] = DEFAULTS[property];
+        }
       }
     }
-  }
+  },
 };

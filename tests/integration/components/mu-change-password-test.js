@@ -1,24 +1,30 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'dummy/tests/helpers';
+import { render } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
 
-moduleForComponent('mu-change-password', 'Integration | Component | mu change password', {
-  integration: true
-});
+module('Integration | Component | mu-change-password', function (hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
+  test('it renders', async function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
 
-  this.render(hbs`{{mu-change-password}}`);
+    await render(hbs`<MuChangePassword />`);
 
-  assert.equal(this.$().text().trim(), '');
+    assert
+      .dom(this.element)
+      .hasText(
+        'Old password New password Confirm new password Change password'
+      );
 
-  // Template block usage:"
-  this.render(hbs`
-    {{#mu-change-password}}
-      template block text
-    {{/mu-change-password}}
-  `);
+    // // Template block usage:
+    // await render(hbs`
+    //   <MuChangePassword>
+    //     template block text
+    //   </MuChangePassword>
+    // `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    // assert.dom(this.element).hasText('template block text');
+  });
 });

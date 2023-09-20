@@ -1,8 +1,11 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Mixin from '@ember/object/mixin';
+import $ from 'jquery';
 import Configuration from './../configuration';
 
-export default Ember.Mixin.create({
-  basePath: Ember.computed(function() {
+// eslint-disable-next-line ember/no-new-mixins
+export default Mixin.create({
+  basePath: computed(function () {
     return Configuration.accountBasePath;
   }),
 
@@ -12,7 +15,7 @@ export default Ember.Mixin.create({
       name: '',
       nickname: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
     });
   },
 
@@ -21,34 +24,43 @@ export default Ember.Mixin.create({
       this.set('loading', true);
       this.set('errorMessage', '');
 
-      const properties = this.getProperties('name', 'nickname', 'password', 'passwordConfirmation');
-      
-      Ember.$.ajax({
-	url: this.get('basePath'),
-	type: 'POST',
-	dataType: 'json',
-	headers: {
-          'Content-Type': 'application/vnd.api+json'
-	},
-	data: JSON.stringify({
+      const properties = {
+        name: this.name,
+        nickname: this.nickname,
+        password: this.password,
+        passwordConfirmation: this.passwordConfirmation,
+      };
+
+      // eslint-disable-next-line ember/no-jquery
+      $.ajax({
+        url: this.basePath,
+        type: 'POST',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/vnd.api+json',
+        },
+        data: JSON.stringify({
           data: {
             type: 'accounts',
             attributes: {
               name: properties['name'],
               nickname: properties['nickname'],
               password: properties['password'],
-             'password-confirmation': properties['passwordConfirmation']
-            }
-          }
-        })
-      }).then((response) => {
-	this._init();
-      }, (reason) => {
-        this.set('loading', false);
-        var error = reason.responseJSON.errors[0].title;
-        console.log('Registration failed: ' + error);
-        this.set('errorMessage', error);
-      });
-    }
-  }
+              'password-confirmation': properties['passwordConfirmation'],
+            },
+          },
+        }),
+      }).then(
+        () => {
+          this._init();
+        },
+        (reason) => {
+          this.set('loading', false);
+          var error = reason.responseJSON.errors[0].title;
+          console.log('Registration failed: ' + error);
+          this.set('errorMessage', error);
+        }
+      );
+    },
+  },
 });
