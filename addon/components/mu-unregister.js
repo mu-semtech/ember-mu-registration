@@ -1,9 +1,19 @@
-// eslint-disable-next-line ember/no-classic-components
-import Component from '@ember/component';
-import layout from '../templates/components/mu-unregister';
-// eslint-disable-next-line ember/no-mixins
-import MuUnregisterMixin from 'ember-mu-registration/mixins/mu-unregister';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import Configuration from '../configuration';
 
-export default class MuUnregister extends Component.extend(MuUnregisterMixin) {
-  layout = layout;
+export default class MuUnregisterComponent extends Component {
+  get basePath() {
+    return Configuration.accountBasePath;
+  }
+
+  @action
+  async unregister() {
+    await fetch(this.basePath + '/current', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/vnd.api+json',
+      },
+    });
+  }
 }

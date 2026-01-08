@@ -6,8 +6,7 @@
     <span class="error-message">{{this.errorMessage}}</span>
   {{/if}}
 </div>
-{{!-- template-lint-disable no-action --}}
-<form class="registration-form" {{action "register" on="submit"}}>
+<form class="registration-form" {{on "submit" this.register}}>
   <div class="registration-form-name">
     <label>
       Name

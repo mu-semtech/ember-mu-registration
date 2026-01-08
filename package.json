@@ -1,6 +1,6 @@
 {
   "name": "ember-mu-registration",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Default ember component for mu-registration-service. See http://mu.semte.ch/.",
   "keywords": [
     "ember-addon",
@@ -33,7 +33,6 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
-    "@ember/jquery": "^2.0.0",
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.2.0"
   },
@@ -80,7 +79,7 @@
     "webpack": "^5.88.1"
   },
   "peerDependencies": {
-    "ember-source": ">= 4.0.0"
+    "ember-source": ">= 4.0.0 || >= 6.0.0"
   },
   "engines": {
     "node": "16.* || >= 18"
